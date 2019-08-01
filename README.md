@@ -62,35 +62,15 @@ We provide a clean launch file which has no dependence on other packages, suppos
 
 <img src="fig/example1.gif" alt="example1" width = "750" height = "450">
 
-**2.**
-If you want to use the interactive tools we provide, you have to compile two additional ros-packages **rviz_plugins** and **waypoint_generator** in **utils**. By default these two packages will be compiled, if you want to skip them, please add a file named 'CATKIN_IGNORE' under each package's root directory.
 
-Then run the following command:
-```
-  roslaunch time_optimizer inte_demo.launch
-```
-In rviz, click 'Panels -> tools -> +' and select the plugin 'Goal3DTool'. If you have successfully compiled all packages from [plan_utils](https://github.com/HKUST-Aerial-Robotics/plan_utils), now you can see *3D Nav Goal* in the tools panel.
-
-We use *3D Nav Goal* to send waypoints for the drone. To use it, click the tool (shortcut keyboard 'g' may conflict with *2D Nav Goal*), then press on left mouse button on a position in rviz, click right mouse button to start to drag it slide up or down for a targeting height (don't lose left button at this time). Finally, you lose left mouse button, and a series of waypoints will be sent to the planner, done.
-
-<img src="fig/example2.gif" alt="example2" width = "750" height = "450">
-
-## 6.Visualization of Results
-The entire pipeline is : setting waypoints -> generating spatial trajectory -> time optimization -> publishing commands (position, velocity, acceleration). Commands can be viewed in rviz. Then, if you want to plot all commands of the final trajectory, please run:
-```
-  roscd time_optimizer
-  sudo chmod +x draw.py
-  python draw.py
-```
-
-## 8.Extension
+## 6.Extension
 To use the time optimizer with other kinds of spatial trajectory generator, you can follow 'demo.cpp' as an example. The simplest way is to implemente your own trajectory type as an inheritance of the class 'Trajectory' definded in 'trajectory_base.h'.
 
-## 9.Acknowledgements
-  We use [mosek](https://www.mosek.com/) for solving second-order cone program(SOCP).
+## 7.Acknowledgements
+  We use [ecos](https://github.com/embotech/ecos) for solving second-order cone program(SOCP).
 
-## 10.Licence
+## 8.Licence
 The source code is released under [GPLv3](http://www.gnu.org/licenses/) license.
 
-## 11.Notes
+## 9.Notes
 - The code has not been deeply tested, if you find any problems, do not hesitate to raise an issue or write an e-mail to me.
