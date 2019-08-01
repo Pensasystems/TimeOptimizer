@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include "time_optimizer_ecos.h"
-#include "mosek.h"
+// #include "mosek.h"
 
 namespace ecos_sol {
 
